@@ -7,6 +7,11 @@ Examples:
 
 */
 function doubleValues(arr){
+    doubles = [];
+    arr.forEach((num) => {
+       doubles.push(num * 2);
+    });
+    return doubles;
     
 }
 
@@ -19,7 +24,13 @@ Examples:
 
 */
 function onlyEvenValues(arr){
-    
+    evenNums = [];
+    arr.forEach((num, i) => {
+        if(arr[i] % 2 === 0){
+            evenNums.push(arr[i]);
+        }
+    });
+    return evenNums;
 }
 
 /*
