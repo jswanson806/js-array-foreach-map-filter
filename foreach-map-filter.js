@@ -7,7 +7,7 @@ Examples:
 
 */
 function doubleValues(arr){
-    doubles = [];
+    const doubles = [];
     arr.forEach((num) => {
        doubles.push(num * 2);
     });
@@ -24,7 +24,7 @@ Examples:
 
 */
 function onlyEvenValues(arr){
-    evenNums = [];
+    const evenNums = [];
     arr.forEach((num, i) => {
         if(arr[i] % 2 === 0){
             evenNums.push(arr[i]);
@@ -42,7 +42,15 @@ Examples:
 
 */
 function showFirstAndLast(arr){
-    
+    const firstAndLastArr = [];
+    arr.forEach((word, i) => {
+        const chars = word.split('');
+        let last = chars.length - 1;
+        let a = chars[0];
+        let z = chars[last];
+        firstAndLastArr.push(`${a}${z}`);
+    });
+    return firstAndLastArr;
 }
 
 /*
@@ -55,7 +63,10 @@ Examples:
 
 */
 function addKeyAndValue(arr,key,value){
-    
+    arr.forEach((obj, i) => {
+        obj[key] = value;
+    });
+    return arr;
 }
 
 /*
@@ -69,7 +80,24 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 function vowelCount(str){
-   
+    str.toLowerCase();
+    const chars = str.split('');
+    const vowels = 'aeiou';
+    const vowelsArr = vowels.split('');
+    const obj = {};
+    chars.forEach((char) => {
+    //loop over chars and compare each value to vowelsArr, increment obj[char]
+        for(let i of vowelsArr){
+            if(char.includes(i)){
+                if(!obj[char]){
+                    obj[char] = 1;
+                } else {
+             obj[char] += 1;
+                };
+            };
+        };
+   });
+   return obj;
 }
 
 /*
@@ -80,7 +108,12 @@ Examples:
     doubleValuesWithMap([1,-2,-3]) // [2,-4,-6]
 */
 
-function doubleValuesWithMap(arr) {}
+function doubleValuesWithMap(arr) {
+    const doubleValues = arr.map(function(num) {
+        return num * 2;
+    });
+    return doubleValues;
+}
 
 /*
 Write a function called valTimesIndex which accepts an array and returns a new array with each value multiplied by the index it is currently at in the array.
@@ -91,7 +124,10 @@ Examples:
 */
 
 function valTimesIndex(arr){
-    
+    const multiplied = arr.map(function(num, i) {
+        return num * i;
+    });
+    return multiplied;
 }
 
 /*
@@ -102,7 +138,13 @@ Examples:
 */
 
 function extractKey(arr, key){
-    
+    const extractedVal = arr.map(function(obj, i) {
+        if(Object.keys(obj).includes(key)) {
+            const val = Object.values(obj).pop();
+            return val;
+        };
+    });
+    return extractedVal;
 }
 
 /*
