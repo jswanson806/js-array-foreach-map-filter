@@ -233,12 +233,20 @@ Examples:
 */
 
 function removeVowels(str) {
-    const vowels = 'aeiou';
-    const vowelArr = vowels.split('');
-    str.toLowerCase();
-    const removedVowels = str.filter(function(char, i){
-        //finish this
-
+    const con = 'qwrtypsdfghjklzxcvbnm';
+    const conArr = con.split('');
+    const lwrCaseStr = str.toLowerCase();
+    const strArr = lwrCaseStr.split('');
+    const newStrArr = [];
+    const removedVowels = strArr.filter(function(char, i){
+        for(let j of conArr) {
+            if(char.includes(j)) {
+                newStrArr.push(char);
+                return newStrArr;
+            }
+        }
+    });
+        return removedVowels.join('');
 }
 
 /*
@@ -249,4 +257,16 @@ Examples:
     doubleOddNumbers([4,4,4,4,4]) // []
 */
 
-function doubleOddNumbers(arr) {}
+function doubleOddNumbers(arr) {
+
+    const onlyOdd = arr.filter(function(num1) {
+        if(num1 % 2 !== 0) {
+            return num1;
+        }
+    });
+    const doubled = onlyOdd.map(function(num2) {
+        const dblNum =  num2 * 2;
+        return dblNum;
+    });
+    return doubled;
+}
